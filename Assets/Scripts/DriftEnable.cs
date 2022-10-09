@@ -66,7 +66,7 @@ public class DriftEnable : MonoBehaviour
             sidwaysSlip = wheelData.sidewaysSlip;
             forwardsSlip = wheelData.forwardSlip;
 
-            if (sidwaysSlip >= 1)
+            if (sidwaysSlip >= 0.8f)
             {
                 startSmoke();
                 startSkid();
