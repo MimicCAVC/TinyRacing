@@ -13,6 +13,8 @@ public class DriftEnable : MonoBehaviour
 
     [SerializeField] ParticleSystem[] tyreSmokes;
 
+    [SerializeField] TrailRenderer[] skidMarks;
+
     float sidwaysSlip;
     float forwardsSlip;
 
@@ -24,7 +26,7 @@ public class DriftEnable : MonoBehaviour
     void Update()
     {
         DriftConfig();
-        HandleDriftSmoke();
+        HandleDriftEffects();
     }
 
     void DriftConfig()
@@ -56,7 +58,7 @@ public class DriftEnable : MonoBehaviour
         }
     }
 
-    void HandleDriftSmoke()
+    void HandleDriftEffects()
     {
         for (int i = 0; i < wheelColliders.Length; i++)
         {
@@ -67,19 +69,23 @@ public class DriftEnable : MonoBehaviour
             if (sidwaysSlip >= 1)
             {
                 startSmoke();
+                startSkid();
             }
             else
             {
                 stopSmoke();
+                stopSkid();
             }
 
             if (forwardsSlip >= 0.5f)
             {
                 startSmoke();
+                startSkid();
             }
             else
             {
                 stopSmoke();
+                stopSkid();
             }
         }
     }
@@ -91,12 +97,26 @@ public class DriftEnable : MonoBehaviour
             tyreSmokes[i].Play();
         }
     }
-
     void stopSmoke()
     {
         for (int i = 0; i < tyreSmokes.Length; i++)
         {
             tyreSmokes[i].Stop();
+        }
+    }
+
+    void startSkid()
+    {
+        for (int i = 0; i < skidMarks.Length; i++)
+        {
+            skidMarks[i].emitting = true;
+        }
+    }
+    void stopSkid()
+    {
+        for (int i = 0; i < skidMarks.Length; i++)
+        {
+            skidMarks[i].emitting = false;
         }
     }
 }
