@@ -20,8 +20,11 @@ public class SoundsHandler : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.W) && !carStart.isPlaying)
         {
-            carStart.Play();
-            Debug.Log("WWWWWWW");
+            carStart.Play();            
+        }
+        else if (Input.GetKeyUp(KeyCode.W) && carStart.isPlaying)
+        {
+            carStart.Stop();
         }
     }
 }
