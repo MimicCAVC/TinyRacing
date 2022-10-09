@@ -5,18 +5,19 @@ using TinyRacingInput;
 
 public class Car : MonoBehaviour
 {
+    [Header("Car Tune")]
     [SerializeField] float motorTorque = 100f;
     [SerializeField] float maxSteer = 30f;
 
+    [Header("Physics")]
     [SerializeField] Transform centreOfMass;
 
-    [SerializeField] float Steer { get; set; }
-    [SerializeField] float Throttle { get; set; }
-
-    Rigidbody carRB;
-
+    [Header("Input")]
     [SerializeField] InputManager inputManager;
+    private float Steer { get; set; }
+    private float Throttle { get; set; }
 
+    private Rigidbody carRB;
     private Wheel[] wheels;
 
     private void Start()

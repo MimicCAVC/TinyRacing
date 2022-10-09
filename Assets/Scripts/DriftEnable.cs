@@ -5,15 +5,23 @@ using TinyRacingInput;
 
 public class DriftEnable : MonoBehaviour
 {
-    WheelFrictionCurve wheelFrictionCurve;
+    
 
-    WheelCollider[] wheelColliders;
-
+    [Header("Input")]
     [SerializeField] InputManager inputManager;
 
-    [SerializeField] ParticleSystem[] tyreSmokes;
+    [Header("Slip Threshold")]
+    [Range(0f, 1f)]
+    [SerializeField] private float sidwaysSlipThreshold = 0.8f;
+    [Range(0f, 1f)]
+    [SerializeField] private float forwardsSlipThreshold = 0.5f;
 
+    [Header("Effects")]
+    [SerializeField] ParticleSystem[] tyreSmokes;
     [SerializeField] TrailRenderer[] skidMarks;
+
+    WheelCollider[] wheelColliders;
+    WheelFrictionCurve wheelFrictionCurve;
 
     float sidwaysSlip;
     float forwardsSlip;
@@ -66,7 +74,7 @@ public class DriftEnable : MonoBehaviour
             sidwaysSlip = wheelData.sidewaysSlip;
             forwardsSlip = wheelData.forwardSlip;
 
-            if (sidwaysSlip >= 0.8f)
+            if (sidwaysSlip >= sidwaysSlipThreshold)
             {
                 startSmoke();
                 startSkid();
@@ -77,7 +85,7 @@ public class DriftEnable : MonoBehaviour
                 stopSkid();
             }
 
-            if (forwardsSlip >= 0.5f)
+            if (forwardsSlip >= forwardsSlipThreshold)
             {
                 startSmoke();
                 startSkid();
