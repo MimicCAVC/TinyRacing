@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TinyRacingInput;
 
 public class Car : MonoBehaviour
 {
@@ -14,19 +15,26 @@ public class Car : MonoBehaviour
 
     Rigidbody carRB;
 
+    [SerializeField] InputManager inputManager;
+
+    private Wheel[] wheels;
+
     private void Start()
     {
+        wheels = GetComponentsInChildren<Wheel>();
         carRB = GetComponent<Rigidbody>();
         carRB.centerOfMass = centreOfMass.localPosition;
     }
 
-    void FixedUpdate()
-    {
-
-    }
-
     void Update()
     {
+        Steer = inputManager.Turn;
+        Throttle = inputManager.Move;
 
+        foreach(var wheel in wheels)
+        {
+            wheel.SteerAngle = Steer * maxSteer;
+            wheel.Torque = Throttle * motorTorque;
+        }
     }
 }
