@@ -11,12 +11,23 @@ public class DriftEnable : MonoBehaviour
 
     [SerializeField] InputManager inputManager;
 
+    [SerializeField] ParticleSystem[] tyreSmokes;
+
+    float sidwaysSlip;
+    float forwardsSlip;
+
     void Start()
     {
         wheelColliders = GetComponentsInChildren<WheelCollider>();
     }
 
     void Update()
+    {
+        DriftConfig();
+        HandleDriftSmoke();
+    }
+
+    void DriftConfig()
     {
         foreach (var wheel in wheelColliders)
         {
@@ -42,6 +53,50 @@ public class DriftEnable : MonoBehaviour
 
                 wheel.sidewaysFriction = wheelFrictionCurve;
             }
+        }
+    }
+
+    void HandleDriftSmoke()
+    {
+        for (int i = 0; i < wheelColliders.Length; i++)
+        {
+            wheelColliders[i].GetGroundHit(out WheelHit wheelData);
+            sidwaysSlip = wheelData.sidewaysSlip;
+            forwardsSlip = wheelData.forwardSlip;
+
+            if (sidwaysSlip >= 1)
+            {
+                startSmoke();
+            }
+            else
+            {
+                stopSmoke();
+            }
+
+            if (forwardsSlip >= 0.5f)
+            {
+                startSmoke();
+            }
+            else
+            {
+                stopSmoke();
+            }
+        }
+    }
+
+    void startSmoke()
+    {
+        for (int i = 0; i < tyreSmokes.Length; i++)
+        {
+            tyreSmokes[i].Play();
+        }
+    }
+
+    void stopSmoke()
+    {
+        for (int i = 0; i < tyreSmokes.Length; i++)
+        {
+            tyreSmokes[i].Stop();
         }
     }
 }
