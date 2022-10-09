@@ -1,41 +1,47 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TinyRacingInput;
 
 public class DriftEnable : MonoBehaviour
 {
-   [SerializeField] WheelCollider wheelCol;
     WheelFrictionCurve wheelFrictionCurve;
-    // Start is called before the first frame update
+
+    WheelCollider[] wheelColliders;
+
+    [SerializeField] InputManager inputManager;
+
     void Start()
     {
-        wheelCol.GetComponent<WheelCollider>();
+        wheelColliders = GetComponentsInChildren<WheelCollider>();
     }
 
-    // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey(KeyCode.LeftShift))
+        foreach (var wheel in wheelColliders)
         {
-            wheelFrictionCurve = wheelCol.sidewaysFriction;
+            if (inputManager.Drift == true)
+            {
+                wheelFrictionCurve = wheel.sidewaysFriction;
 
-            wheelFrictionCurve.extremumSlip = 1f;
-            wheelFrictionCurve.extremumValue = 1f;
-            wheelFrictionCurve.asymptoteSlip = 1f;
-            wheelFrictionCurve.asymptoteValue = 1f;
-            wheelFrictionCurve.stiffness = 1f;
+                wheelFrictionCurve.extremumSlip = 1f;
+                wheelFrictionCurve.extremumValue = 1f;
+                wheelFrictionCurve.asymptoteSlip = 1f;
+                wheelFrictionCurve.asymptoteValue = 1f;
+                wheelFrictionCurve.stiffness = 1f;
 
-            wheelCol.sidewaysFriction = wheelFrictionCurve;
-        }
-        else
-        {
-            wheelFrictionCurve.extremumSlip = 3f;
-            wheelFrictionCurve.extremumValue = 3f;
-            wheelFrictionCurve.asymptoteSlip = 3f;
-            wheelFrictionCurve.asymptoteValue = 3f;
-            wheelFrictionCurve.stiffness = 3f;
+                wheel.sidewaysFriction = wheelFrictionCurve;
+            }
+            else
+            {
+                wheelFrictionCurve.extremumSlip = 3f;
+                wheelFrictionCurve.extremumValue = 3f;
+                wheelFrictionCurve.asymptoteSlip = 3f;
+                wheelFrictionCurve.asymptoteValue = 3f;
+                wheelFrictionCurve.stiffness = 3f;
 
-            wheelCol.sidewaysFriction = wheelFrictionCurve;
+                wheel.sidewaysFriction = wheelFrictionCurve;
+            }
         }
     }
 }

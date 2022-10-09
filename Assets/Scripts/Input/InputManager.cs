@@ -12,10 +12,12 @@ namespace TinyRacingInput
 
         public float Move { get; private set; }
         public float Turn { get; private set; }
+        public bool Drift { get; private set; }
 
         private InputActionMap _currentMap;
         private InputAction _throttleAction;
         private InputAction _turnAction;
+        private InputAction _driftAction;
 
         private void Awake()
         {
@@ -23,14 +25,17 @@ namespace TinyRacingInput
             _currentMap = PlayerInput.currentActionMap;
             _throttleAction = _currentMap.FindAction("Throttle");
             _turnAction = _currentMap.FindAction("Turn");
+            _driftAction = _currentMap.FindAction("Drift");
 
             // calling the functions when the player presses the keybinds
             _throttleAction.performed += onMove;
-            _turnAction.performed += onLook;
+            _turnAction.performed += onTurn;
+            _driftAction.performed += onDrift;
 
             // calling the functions when the player releases the keybinds
             _throttleAction.canceled += onMove;
-            _turnAction.canceled += onLook;
+            _turnAction.canceled += onTurn;
+            _driftAction.canceled += onDrift;
         }
 
         private void onMove(InputAction.CallbackContext context)
@@ -38,9 +43,14 @@ namespace TinyRacingInput
             Move = context.ReadValue<float>();
         }
 
-        private void onLook(InputAction.CallbackContext context)
+        private void onTurn(InputAction.CallbackContext context)
         {
             Turn = context.ReadValue<float>();
+        }
+
+        private void onDrift(InputAction.CallbackContext context)
+        {
+            Drift = context.ReadValueAsButton();
         }
 
         private void OnEnable()
