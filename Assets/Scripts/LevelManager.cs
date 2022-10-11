@@ -13,6 +13,7 @@ public class LevelManager : MonoBehaviour
     {
         switch(other.gameObject.tag)
         {
+            
             case "Checkpoint":
                 if (!checkpoint)
                 {
@@ -21,7 +22,8 @@ public class LevelManager : MonoBehaviour
                     Debug.Log(checkPointAmount);
                     
                 }                
-                break;     
+                break;
+            
 
             case "Finish":
                 if (checkPointAmount == 3)

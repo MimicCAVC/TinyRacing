@@ -1,0 +1,23 @@
+fileFormatVersion: 2
+guid: c5a17429549092e47a8383d1a05c9285
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - Guti
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 23b36983134a26a4080eaa4bf0089566, type: 3}
+  - {fileID: 12800000, guid: e357dcf9cc9560a4b813830743204045, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
