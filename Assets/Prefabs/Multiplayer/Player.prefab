@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 246213014536376783}
   - component: {fileID: 246213014536376780}
   - component: {fileID: 2242722561404375758}
-  - component: {fileID: 1015215446168316801}
+  - component: {fileID: 7129374226109380468}
   m_Layer: 7
   m_Name: Car
   m_TagString: Player
@@ -181,7 +181,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa45528f35bd72f4da36e98532b37009, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1015215446168316801
+  DingDing: {fileID: 0}
+--- !u!114 &7129374226109380468
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -190,7 +191,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 246213014536376779}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e96cb6065543e43c4a752faaa1468eb1, type: 3}
+  m_Script: {fileID: 11500000, guid: df2868252ab5c4d1da357e8f11f1b524, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   SyncPositionX: 1
@@ -326,7 +327,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2242722562782817367}
-  m_LocalRotation: {x: -0, y: -4.5458387e-10, z: 3.0832578e-10, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -481,7 +482,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7193540488614509763}
-  m_LocalRotation: {x: 0.29360378, y: -0.000000104620355, z: 0.00000003213312, w: 0.95592725}
+  m_LocalRotation: {x: 0.29360378, y: -0.00000013681885, z: 0.00000004202258, w: 0.95592725}
   m_LocalPosition: {x: 0.0000010627688, y: 4.112278, z: -4.2200007}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
