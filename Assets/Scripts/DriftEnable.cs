@@ -26,6 +26,8 @@ public class DriftEnable : MonoBehaviour
     float sidwaysSlip;
     float forwardsSlip;
 
+    [SerializeField] AudioSource skeeert;
+
     void Start()
     {
         wheelColliders = GetComponentsInChildren<WheelCollider>();
@@ -76,6 +78,8 @@ public class DriftEnable : MonoBehaviour
 
             if (sidwaysSlip >= sidwaysSlipThreshold)
             {
+                if (!skeeert.isPlaying)
+                { skeeert.Play(); }
                 startSmoke();
                 startSkid();
             }
@@ -87,6 +91,10 @@ public class DriftEnable : MonoBehaviour
 
             if (forwardsSlip >= forwardsSlipThreshold)
             {
+                if (!skeeert.isPlaying)
+                { skeeert.Play(); }
+                    
+            
                 startSmoke();
                 startSkid();
             }

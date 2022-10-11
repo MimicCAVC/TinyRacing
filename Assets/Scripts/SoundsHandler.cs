@@ -4,27 +4,45 @@ using UnityEngine;
 
 public class SoundsHandler : MonoBehaviour
 {
-    [SerializeField] AudioSource carStart;
+    [SerializeField] AudioSource carStartSound;
+    [SerializeField] AudioSource MeepMeepSound;
+     
     void Start()
     {
         
-    }
+
+        
+    }   
 
     
     void Update()
     {
-        CarEngineStart();
+        //CarEngineStart();
+        MeepMeep();
+
+        
     }
 
     void CarEngineStart()
     {
-        if (Input.GetKey(KeyCode.W) && !carStart.isPlaying)
+        if (Input.GetKey(KeyCode.W) && !carStartSound.isPlaying)
         {
-            carStart.Play();            
+            
+            carStartSound.Play();            
         }
-        else if (Input.GetKeyUp(KeyCode.W) && carStart.isPlaying)
+        else if (Input.GetKeyUp(KeyCode.W) && carStartSound.isPlaying)
         {
-            carStart.Stop();
+            carStartSound.Stop();
         }
+    }
+
+    void MeepMeep()
+    {
+        if (Input.GetKey(KeyCode.Space) && !MeepMeepSound.isPlaying)
+        {
+            
+            MeepMeepSound.Play();
+        }
+        
     }
 }
