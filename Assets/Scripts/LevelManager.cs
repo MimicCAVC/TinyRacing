@@ -9,6 +9,7 @@ public class LevelManager : MonoBehaviour
     Timer timerScript;
 
     bool checkpoint = false;
+    [SerializeField] AudioSource DingDing;
     private void OnTriggerEnter(Collider other)
     {
         switch(other.gameObject.tag)
@@ -20,7 +21,10 @@ public class LevelManager : MonoBehaviour
                     checkpoint = true;
                     checkPointAmount++;
                     Debug.Log(checkPointAmount);
-                    
+                    if (!DingDing.isPlaying)
+                    {
+                        DingDing.Play();
+                    }
                 }                
                 break;
             
