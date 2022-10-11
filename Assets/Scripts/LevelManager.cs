@@ -7,18 +7,26 @@ public class LevelManager : MonoBehaviour
 {
     float checkPointAmount = 0f;
     Timer timerScript;
+
+    bool checkpoint = false;
     private void OnTriggerEnter(Collider other)
     {
         switch(other.gameObject.tag)
         {
             case "Checkpoint":
-                checkPointAmount += 1;
-                Debug.Log(checkPointAmount);
-                break;
-            case "Finish":
-                if (checkPointAmount == 5)
+                if (!checkpoint)
                 {
-                    Debug.Log(timerScript.t);
+                    checkpoint = true;
+                    checkPointAmount++;
+                    Debug.Log(checkPointAmount);
+                    
+                }                
+                break;     
+
+            case "Finish":
+                if (checkPointAmount == 3)
+                {
+                    Debug.Log("Finished!");
                     SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
                 }
                 else
@@ -29,6 +37,19 @@ public class LevelManager : MonoBehaviour
                 break;
         }
     }
+    private void OnTriggerExit(Collider other)
+    {
+        switch (other.gameObject.tag)
+        {
+            case "Checkpoint":
+                if (checkpoint)
+                {
+                    checkpoint = false;
+                }
+                break;
+        }
+    }
+
     private void Update()
     {
         LevelRestart();

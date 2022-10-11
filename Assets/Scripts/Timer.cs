@@ -14,7 +14,7 @@ public class Timer : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.W))
         {
-            timerTime = Time.time;         
+            timerTime = Time.timeSinceLevelLoad;         
         }
     }
 
@@ -23,7 +23,7 @@ public class Timer : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.W))
         {
-            t = Time.time - timerTime;
+            t = Time.timeSinceLevelLoad - timerTime;
 
             string minutes = ((int)t / 60).ToString("00");
             string seconds = (t % 60).ToString("00");
