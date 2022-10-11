@@ -95,6 +95,17 @@ public class DriftEnable : MonoBehaviour
                 stopSmoke();
                 stopSkid();
             }
+
+            if(inputManager.Drift)
+            {
+                startSmoke();
+                startSkid();
+            }
+            else
+            {
+                stopSmoke();
+                stopSkid();
+            }
         }
     }
 
