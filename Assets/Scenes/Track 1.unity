@@ -188,6 +188,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: NetworkManager
       objectReference: {fileID: 0}
+    - target: {fileID: 5230155992185166517, guid: 435988de6d39fe7438ddf2836665a868, type: 3}
+      propertyPath: ConnectionData.Address
+      value: 192.168.0.79
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 435988de6d39fe7438ddf2836665a868, type: 3}
 --- !u!1001 &181410219
