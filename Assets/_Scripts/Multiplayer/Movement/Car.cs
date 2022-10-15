@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TinyRacingInput;
+using Photon.Pun;
 
 public class Car : MonoBehaviour
 {
@@ -14,6 +15,9 @@ public class Car : MonoBehaviour
 
     [Header("Input")]
     [SerializeField] InputManager inputManager;
+
+    [Header("Networking")]
+    [SerializeField] PhotonView photonView;
 
     [Header("Camera")]
     [SerializeField] GameObject vm_cam;
@@ -29,14 +33,23 @@ public class Car : MonoBehaviour
         wheels = GetComponentsInChildren<Wheel>();
         carRB = GetComponent<Rigidbody>();
         carRB.centerOfMass = centreOfMass.localPosition;
+        
+        if(!photonView.IsMine)
+        {
+            Destroy(vm_cam);
+            gameObject.GetComponent<Rigidbody>().isKinematic = true;
+            gameObject.GetComponent<Rigidbody>().useGravity = false;
+        }
     }
 
     void Update()
     {
+        if (!photonView.IsMine) return;
+
         Steer = inputManager.Turn;
         Throttle = inputManager.Move;
 
-        foreach(var wheel in wheels)
+        foreach (var wheel in wheels)
         {
             wheel.SteerAngle = Steer * maxSteer;
             wheel.Torque = Throttle * motorTorque;

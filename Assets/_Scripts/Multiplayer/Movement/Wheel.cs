@@ -1,3 +1,4 @@
+using Photon.Pun;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,6 +8,9 @@ public class Wheel : MonoBehaviour
     [SerializeField] bool steer;
     [SerializeField] bool invertSteer;
     [SerializeField] bool power;
+
+    [Header("Networking")]
+    [SerializeField] PhotonView photonView;
 
     public float SteerAngle { get; set; }
     public float Torque { get; set; }
@@ -31,6 +35,7 @@ public class Wheel : MonoBehaviour
 
     void FixedUpdate()
     {
+        if (!photonView.IsMine) return;
         if (steer)
         {
             wheelCollider.steerAngle = SteerAngle * (invertSteer ? -1 : 1);

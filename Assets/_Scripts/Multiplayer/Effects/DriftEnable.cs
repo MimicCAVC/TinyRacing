@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TinyRacingInput;
+using Photon.Pun;
 
 public class DriftEnable : MonoBehaviour
 {
@@ -9,6 +10,9 @@ public class DriftEnable : MonoBehaviour
 
     [Header("Input")]
     [SerializeField] InputManager inputManager;
+
+    [Header("Networking")]
+    [SerializeField] PhotonView photonView;
 
     [Header("Slip Threshold")]
     [Range(0f, 1f)]
@@ -26,7 +30,7 @@ public class DriftEnable : MonoBehaviour
     float sidwaysSlip;
     float forwardsSlip;
 
-    [SerializeField] AudioSource skeeert;
+    //[SerializeField] AudioSource skeeert;
 
     void Start()
     {
@@ -78,8 +82,8 @@ public class DriftEnable : MonoBehaviour
 
             if (sidwaysSlip >= sidwaysSlipThreshold)
             {
-                if (!skeeert.isPlaying)
-                { skeeert.Play(); }
+                //if (!skeeert.isPlaying)
+                //{ skeeert.Play(); }
                 startSmoke();
                 startSkid();
             }
@@ -91,10 +95,10 @@ public class DriftEnable : MonoBehaviour
 
             if (forwardsSlip >= forwardsSlipThreshold)
             {
-                if (!skeeert.isPlaying)
-                { skeeert.Play(); }
-                    
-            
+                //if (!skeeert.isPlaying)
+                //{ skeeert.Play(); }
+
+
                 startSmoke();
                 startSkid();
             }
@@ -104,15 +108,18 @@ public class DriftEnable : MonoBehaviour
                 stopSkid();
             }
 
-            if(inputManager.Drift)
+            if(photonView.IsMine)
             {
-                startSmoke();
-                startSkid();
-            }
-            else
-            {
-                stopSmoke();
-                stopSkid();
+                if(inputManager.Drift)
+                {
+                    startSmoke();
+                    startSkid();
+                }
+                else
+                {
+                    stopSmoke();
+                    stopSkid();
+                }
             }
         }
     }

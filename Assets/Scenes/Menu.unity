@@ -2412,7 +2412,7 @@ MonoBehaviour:
   usernameInputField: {fileID: 7277779658057971794}
   errorText: {fileID: 7277779657715390600}
   roomNameText: {fileID: 7277779657960804717}
-  roomListContent: {fileID: 7277779658220273720}
+  roomListContent: {fileID: 7277779659367391021}
   roomListItemPrefab: {fileID: 4294100059863763915, guid: caff326c46c00d74981593ff91f8420e, type: 3}
   playerListContent: {fileID: 7277779658220273720}
   playerListItemPrefab: {fileID: 7250861561470438694, guid: a3e6af2a721ef4845a736b374456bf3b, type: 3}
