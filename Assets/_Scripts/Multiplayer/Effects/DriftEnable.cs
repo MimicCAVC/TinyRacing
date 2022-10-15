@@ -84,12 +84,12 @@ public class DriftEnable : MonoBehaviour
             {
                 //if (!skeeert.isPlaying)
                 //{ skeeert.Play(); }
-                startSmoke();
+                
                 startSkid();
             }
             else
             {
-                stopSmoke();
+                
                 stopSkid();
             }
 
@@ -99,12 +99,12 @@ public class DriftEnable : MonoBehaviour
                 //{ skeeert.Play(); }
 
 
-                startSmoke();
+                
                 startSkid();
             }
             else
             {
-                stopSmoke();
+                
                 stopSkid();
             }
 
@@ -112,12 +112,12 @@ public class DriftEnable : MonoBehaviour
             {
                 if(inputManager.Drift)
                 {
-                    startSmoke();
+                    
                     startSkid();
                 }
                 else
                 {
-                    stopSmoke();
+                    
                     stopSkid();
                 }
             }
