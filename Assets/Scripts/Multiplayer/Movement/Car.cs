@@ -2,9 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TinyRacingInput;
-using Unity.Netcode;
 
-public class Car : NetworkBehaviour
+public class Car : MonoBehaviour
 {
     [Header("Car Tune")]
     [SerializeField] float motorTorque = 100f;
@@ -30,17 +29,10 @@ public class Car : NetworkBehaviour
         wheels = GetComponentsInChildren<Wheel>();
         carRB = GetComponent<Rigidbody>();
         carRB.centerOfMass = centreOfMass.localPosition;
-
-        if(!IsOwner)
-        {
-            Destroy(vm_cam);
-        }
     }
 
     void Update()
     {
-        if (!IsOwner) return;
-
         Steer = inputManager.Turn;
         Throttle = inputManager.Move;
 

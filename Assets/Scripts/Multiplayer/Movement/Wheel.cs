@@ -1,9 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Unity.Netcode;
 
-public class Wheel : NetworkBehaviour
+public class Wheel : MonoBehaviour
 {
     [SerializeField] bool steer;
     [SerializeField] bool invertSteer;
@@ -32,8 +31,6 @@ public class Wheel : NetworkBehaviour
 
     void FixedUpdate()
     {
-        if (!IsOwner) return;
-
         if (steer)
         {
             wheelCollider.steerAngle = SteerAngle * (invertSteer ? -1 : 1);
