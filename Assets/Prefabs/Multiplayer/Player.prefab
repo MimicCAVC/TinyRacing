@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 3300049464468126219}
   - component: {fileID: 3300049464468126216}
   - component: {fileID: 3582992456088615178}
-  - component: {fileID: 7801937093185766008}
+  - component: {fileID: 998654637400643947}
   m_Layer: 7
   m_Name: Car
   m_TagString: Player
@@ -182,7 +182,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DingDing: {fileID: 0}
---- !u!114 &7801937093185766008
+--- !u!114 &998654637400643947
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -191,13 +191,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 3300049464468126223}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
+  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GlobalObjectIdHash: 951099334
-  AlwaysReplicateAsRoot: 0
-  DontDestroyWithOwner: 0
-  AutoObjectParentSync: 1
+  m_SynchronizePosition: 1
+  m_SynchronizeRotation: 1
+  m_SynchronizeScale: 0
+  m_UseLocal: 1
 --- !u!1 &3582992455319914387
 GameObject:
   m_ObjectHideFlags: 0
