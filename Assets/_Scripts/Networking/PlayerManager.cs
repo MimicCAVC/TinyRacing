@@ -9,10 +9,7 @@ public class PlayerManager : MonoBehaviour
 {
     public static PlayerManager instance;
 
-    [SerializeField] Transform[] spawnPos;
-    bool isUsed = false;
-
-    int localPlayerIndex;
+    int playerID;
 
     PhotonView photonView;
 
@@ -26,17 +23,11 @@ public class PlayerManager : MonoBehaviour
 
     private void Start()
     {
-        localPlayerIndex = PhotonNetwork.LocalPlayer.ActorNumber;
+        playerID = photonView.ViewID;
 
         if (photonView.IsMine)
         {
-            for (int i = 0; i < spawnPos.Length; i++)
-            {
-                if (spawnPos[i].gameObject.name == "sp" + localPlayerIndex)
-                {
-                    PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "Vehicles", "Sedan"), spawnPos[i].position, Quaternion.identity);
-                }
-            }
+            PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "Vehicles", "Sedan"), GameObject.Find("sp" + playerID).transform.position, Quaternion.identity);
         }
     }
 }
