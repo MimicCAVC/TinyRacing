@@ -12,6 +12,8 @@ public class PlayerManager : MonoBehaviour
     [SerializeField] Transform[] spawnPos;
     bool isUsed = false;
 
+    int localPlayerIndex;
+
     PhotonView photonView;
 
     private void Awake()
@@ -24,14 +26,17 @@ public class PlayerManager : MonoBehaviour
 
     private void Start()
     {
-        for (int i = 0; i < spawnPos.Length; i++)
-        {
-            
-        }
+        localPlayerIndex = PhotonNetwork.LocalPlayer.ActorNumber;
 
         if (photonView.IsMine)
         {
-            PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "Vehicles", "Sedan"), Vector3.zero, Quaternion.identity);
+            for (int i = 0; i < spawnPos.Length; i++)
+            {
+                if (spawnPos[i].gameObject.name == "sp" + localPlayerIndex)
+                {
+                    PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "Vehicles", "Sedan"), spawnPos[i].position, Quaternion.identity);
+                }
+            }
         }
     }
 }

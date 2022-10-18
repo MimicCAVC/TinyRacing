@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Checkpoint
   - GroundSub
+  - SpawnPoint
   layers:
   - Default
   - TransparentFX
