@@ -9,6 +9,9 @@ public class PlayerManager : MonoBehaviour
 {
     public static PlayerManager instance;
 
+    [SerializeField] Transform[] spawnPos;
+    bool isUsed = false;
+
     PhotonView photonView;
 
     private void Awake()
@@ -17,9 +20,15 @@ public class PlayerManager : MonoBehaviour
 
         instance = this;
     }
+    
 
     private void Start()
     {
+        for (int i = 0; i < spawnPos.Length; i++)
+        {
+            
+        }
+
         if (photonView.IsMine)
         {
             PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "Vehicles", "Sedan"), Vector3.zero, Quaternion.identity);
